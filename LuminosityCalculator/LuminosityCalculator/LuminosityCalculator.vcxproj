@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{FAC51953-5552-4AB9-8C7A-CDC731C6123C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>LuminosityCalculator</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(Configuration)\</OutDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\lib\boost_1_63_0;..\lib\opencv;$(IncludePath)</IncludePath>
+    <LibraryPath>..\lib\boost_1_63_0\lib64-msvc-14.0;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(Platform)\$(Configuration)\</OutDir>
+    <IncludePath>..\lib\boost_1_63_0;$(IncludePath)</IncludePath>
+    <ReferencePath>$(VC_ReferencesPath_x64);$(ReferencePath)</ReferencePath>
+    <LibraryPath>..\lib\boost_1_63_0\lib64-msvc-14.0;$(VC_ReferencePath_VC_x64);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;BOOST_FILESYSTEM_DYN_LINK;BOOST_ALL_DYN_LINK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\lib\opencv\sources\modules\highgui\include;..\..\lib\opencv\sources\modules\imgcodecs\include;..\..\lib\opencv\sources\modules\imgproc\include;..\..\lib\opencv\sources\modules\objdetect\include;..\..\lib\opencv\sources\modules\photo\include;..\..\lib\opencv\sources\modules\shape\include;..\..\lib\opencv\sources\modules\stitching\include;..\..\lib\opencv\sources\modules\superres\include;..\..\lib\opencv\sources\modules\video\include;..\..\lib\opencv\sources\modules\videoio\include;..\..\lib\opencv\sources\modules\videostab\include;..\..\lib\opencv\sources\modules\viz\include;..\..\lib\opencv\sources\modules\calib3d\include;..\..\lib\opencv\sources\modules\features2d\include;..\..\lib\opencv\sources\modules\flann\include;..\..\lib\opencv\sources\modules\ml\include;..\..\lib\opencv\sources\modules\videoio\include;..\..\lib\opencv\sources\modules\imgcodecs\include;..\..\lib\opencv\build\include;..\..\lib\opencv\sources\modules\highgui\include;..\..\lib\opencv\sources\modules\objdetect\include;..\..\lib\opencv\sources\modules\video\include;..\..\lib\opencv\sources\modules\photo\include;..\..\lib\opencv\sources\modules\imgproc\include;..\..\lib\opencv\sources\include;..\..\lib\opencv\sources\modules\core\include;..\..\lib\boost_1_63_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opencv_world330d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\lib\opencv\build\x64\vc14\lib;..\..\LIB\boost_1_63_0\lib64-msvc-14.0;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /Y $(SolutionDir)$(ProjectName)\$(Platform)\$(Configuration)\LuminosityCalculator.exe $(SolutionDir)$(Platform)\$(Configuration)
+copy /Y $(SolutionDir)$(ProjectName)\$(Platform)\$(Configuration)\LuminosityCalculatorTests.dll $(SolutionDir)$(Platform)\$(Configuration)
+copy /Y $(SolutionDir)$(ProjectName)\$(Platform)\$(Configuration)\LuminosityCalculator.pdb $(SolutionDir)$(Platform)\$(Configuration)
+copy /Y $(SolutionDir)$(ProjectName)\$(Platform)\$(Configuration)\LuminosityCalculator.lib $(SolutionDir)$(Platform)\$(Configuration)
+copy /Y $(SolutionDir)..\lib\opencv\build\x64\vc14\bin\opencv_ffmpeg330_64.dll $(SolutionDir)$(Platform)\$(Configuration)\
+copy /Y $(SolutionDir)..\lib\opencv\build\x64\vc14\bin\opencv_world330d.dll $(SolutionDir)$(Platform)\$(Configuration)
+copy /Y $(SolutionDir)..\lib\boost_1_63_0\lib64-msvc-14.0\boost_filesystem-*.* $(SolutionDir)$(Platform)\$(Configuration)
+copy /Y $(SolutionDir)..\lib\boost_1_63_0\lib64-msvc-14.0\boost_system*.* $(SolutionDir)$(Platform)\$(Configuration)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;BOOST_FILESYSTEM_DYN_LINK;BOOST_ALL_DYN_LINK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\lib\opencv\sources\modules\highgui\include;..\..\lib\opencv\sources\modules\imgcodecs\include;..\..\lib\opencv\sources\modules\imgproc\include;..\..\lib\opencv\sources\modules\objdetect\include;..\..\lib\opencv\sources\modules\photo\include;..\..\lib\opencv\sources\modules\shape\include;..\..\lib\opencv\sources\modules\stitching\include;..\..\lib\opencv\sources\modules\superres\include;..\..\lib\opencv\sources\modules\video\include;..\..\lib\opencv\sources\modules\videoio\include;..\..\lib\opencv\sources\modules\videostab\include;..\..\lib\opencv\sources\modules\viz\include;..\..\lib\opencv\sources\modules\calib3d\include;..\..\lib\opencv\sources\modules\features2d\include;..\..\lib\opencv\sources\modules\flann\include;..\..\lib\opencv\sources\modules\ml\include;..\..\lib\opencv\sources\modules\videoio\include;..\..\lib\opencv\sources\modules\imgcodecs\include;..\..\lib\opencv\build\include;..\..\lib\opencv\sources\modules\highgui\include;..\..\lib\opencv\sources\modules\objdetect\include;..\..\lib\opencv\sources\modules\video\include;..\..\lib\opencv\sources\modules\photo\include;..\..\lib\opencv\sources\modules\imgproc\include;..\..\lib\opencv\sources\include;..\..\lib\opencv\sources\modules\core\include;..\..\lib\boost_1_63_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opencv_world330.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\lib\opencv\build\x64\vc14\lib;..\..\LIB\boost_1_63_0\lib64-msvc-14.0;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /Y $(SolutionDir)$(ProjectName)\$(Platform)\$(Configuration)\LuminosityCalculator.exe $(SolutionDir)$(Platform)\$(Configuration)
+copy /Y $(SolutionDir)$(ProjectName)\$(Platform)\$(Configuration)\LuminosityCalculatorTests.dll $(SolutionDir)$(Platform)\$(Configuration)
+copy /Y $(SolutionDir)$(ProjectName)\$(Platform)\$(Configuration)\LuminosityCalculator.lib $(SolutionDir)$(Platform)\$(Configuration)
+copy /Y $(SolutionDir)..\lib\opencv\build\x64\vc14\bin\opencv_ffmpeg330_64.dll $(SolutionDir)$(Platform)\$(Configuration)
+copy /Y $(SolutionDir)..\lib\opencv\build\x64\vc14\bin\opencv_world330.dll $(SolutionDir)$(Platform)\$(Configuration)
+copy /Y $(SolutionDir)..\lib\boost_1_63_0\lib64-msvc-14.0\boost_filesystem-*.* $(SolutionDir)$(Platform)\$(Configuration)
+copy /Y $(SolutionDir)..\lib\boost_1_63_0\lib64-msvc-14.0\boost_system*.* $(SolutionDir)$(Platform)\$(Configuration)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ImageProcessor.h" />
+    <ClInclude Include="RAII.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ImageProcessor.cpp" />
+    <ClCompile Include="LuminosityCalculator.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
