@@ -32,7 +32,6 @@ namespace detail
 			else
 			{
 				auto sharedImageProcessor = imageProcessor.lock();
-				std::cout << sharedImageProcessor->File() << std::endl;
 				threadMutex.unlock();
 
 				try
