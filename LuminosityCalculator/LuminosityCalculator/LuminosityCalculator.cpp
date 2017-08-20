@@ -23,6 +23,7 @@ namespace detail
 {
 	const int MAX_THREADS = 100;
 	std::recursive_timed_mutex threadMutex;
+
 	void WorkerThread(std::weak_ptr<ImageProcessor> imageProcessor)
 	{
 		if (threadMutex.try_lock_for(std::chrono::milliseconds(1000)))
@@ -45,7 +46,7 @@ namespace detail
 
 					if (threadMutex.try_lock_for(std::chrono::milliseconds(1000)))
 					{
-						std::cout << "Average Luminosity for " << sharedImageProcessor->File().filename().string().c_str()<< "is"<< sharedImageProcessor->AvgLuminosity()<<std::endl;
+						std::cout << "Average Luminosity for " << sharedImageProcessor->File().filename().string().c_str()<< "is "<< sharedImageProcessor->AvgLuminosity()<<std::endl;
 						threadMutex.unlock();
 					}
 				}
@@ -86,7 +87,6 @@ int main(int argc, char* argv[])
 	for_each(directory_iterator(videoDirPath), directory_iterator(),
 		[&files](const path& file) 
 	{
-		std::cout << file.string().c_str() << std::endl;
 		files.emplace_back(file); 
 	});
 
@@ -101,6 +101,8 @@ int main(int argc, char* argv[])
 	size_t numberOfFiles = files.size();
 	const size_t batches = static_cast<size_t>(ceil(static_cast<double>(numberOfFiles) / static_cast<double>(numberOfThreads)));
 
+
+	size_t fileIndex = 0;
 	//create threads in batches where each batch = std::min(numberOfFiles, numberOfThreads) number of threads 
 	for (size_t batch = 0; batch < batches; ++batch)
 	{
@@ -108,18 +110,20 @@ int main(int argc, char* argv[])
 
 		for (size_t index = 0; index < workerThreads; ++index)
 		{
-
-			cout << "starting thread #" << index << "for batch " << batch << endl;
 			if (::detail::threadMutex.try_lock_for(std::chrono::milliseconds(1000)))
 			{
-				std::shared_ptr<ImageProcessor> imageProcessor = std::make_shared<ImageProcessor>(files[index]);
+				auto&& file = files[fileIndex++];
+				cout << "starting thread # " << index << "for batch " << batch << " file " << file << endl;
+
+				std::shared_ptr<ImageProcessor> imageProcessor = std::make_shared<ImageProcessor>(file);
 
 				frames[batch].emplace_back(std::move(imageProcessor));
+
+				auto&& threadContext = frames[batch][index];
+				threads[batch].emplace_back(thread(::detail::WorkerThread, threadContext));
+
 				::detail::threadMutex.unlock();
 			}
-
-			auto&& threadContext = frames[batch][index];
-			threads[batch].emplace_back(thread(::detail::WorkerThread, threadContext));
 		}
 		numberOfFiles -= workerThreads;
 
@@ -142,8 +146,8 @@ int main(int argc, char* argv[])
 		});
 	});
 
-	std::cout << "Minimum luminance value " << avgVideoLuminosities.begin()->first << "recorded for video file" << avgVideoLuminosities.begin()->second << std::endl;
-	std::cout << "Maximum luminance value " << avgVideoLuminosities.rbegin()->first << "recorded for video file" << avgVideoLuminosities.rbegin()->second << std::endl;
+	std::cout << "Minimum luminance value is " << avgVideoLuminosities.begin()->first << " for video file " << avgVideoLuminosities.begin()->second << std::endl;
+	std::cout << "Maximum luminance value is " << avgVideoLuminosities.rbegin()->first << " for video file " << avgVideoLuminosities.rbegin()->second << std::endl;
 
 	unsigned int init = 0;
 	unsigned int sumVideosLuminosity = std::accumulate(avgVideoLuminosities.cbegin(), avgVideoLuminosities.cend(), init, 
@@ -154,7 +158,8 @@ int main(int argc, char* argv[])
 
 	std::cout << "Mean luminance value " << sumVideosLuminosity/avgVideoLuminosities.size()<< std::endl;
 	auto medianIndex = static_cast<unsigned int>(avgVideoLuminosities.size() / 2);
-	std::cout << "Median luminance value " << avgVideoLuminosities.find(medianIndex)->first<< std::endl;
+	auto medianValueIt = std::next(avgVideoLuminosities.begin(), medianIndex);
+	std::cout << "Median luminance value " << medianValueIt->first<< std::endl;
     return 0;
 }
 

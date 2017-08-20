@@ -75,7 +75,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)\$(Platform)\$(Configuration)\</OutDir>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\lib\boost_1_63_0;..\lib\opencv;$(IncludePath)</IncludePath>
     <LibraryPath>..\lib\boost_1_63_0\lib64-msvc-14.0;$(LibraryPath)</LibraryPath>
   </PropertyGroup>

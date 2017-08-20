@@ -7,6 +7,13 @@ Usage: LuminosityCalculator.exe <Videos Director Path> <Number of Threads>
 
 Errors: Input of an invalid video directory path or threads more than 100 
 
+the output directory is set to the following directory
+	ImageProcessor\LuminosityCalculator\x64\Debug
+	ImageProcessor\LuminosityCalculator\x64\Release
+
+The binaries are built using Visual Studio 2017
+
+	
 The video files are processed using opencv library. Each video file is converted to frames/images
 For each frame, the following calculation is done to compute Luminosity
 1. Using HSV method, the V component contains the brightness of a pixel and can be used to 
@@ -122,6 +129,10 @@ Data Structures
 /////////////////////////////////////////////////////////////////////////////
 Other notes:
     
+	Dependant Libraries
+	Boost_1_63_0
+	OpenCV_3.3.2
+	
 	Please contact jaskiranjit@gmail.com, if you have any question. 
 
 //////////////////////////////////////////////////////////////////////////
