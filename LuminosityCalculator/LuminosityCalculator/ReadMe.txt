@@ -123,6 +123,32 @@ Data Structures
 	
 	all the frames can also be saved to an image directory for a video file. Each image is stored with a number based on its frame number
 	void SaveFrames(const string& outputDir)
+	
+	RAII.hpp
+	template<typename PredicateCreate, typename PredicateDestroy, typename Resource, typename... Args>
+	struct RAII{}
+	
+	allows one to create a RAII by letting user specify a prediate to create and destroy and arguments to create/initialize a resource
+		
+	here are some ways to create some raiis
+		//auto create and destroy foo
+		RAII<Creator1, Destroyer, Foo> raii1;
+		
+		//auto create foo with a name and destroy it as well
+		RAII<Creator2, Destroyer, Foo, std::string> raii2("foo2")
+		
+		//take ownership, using rvalue and move it to raii
+		RAII<Creator3, Destroyer, Foo> raii3(std::move(foo3))
+		
+		//move a resource and then re-initialize it with a new name
+		RAII<Creator4, Destroyer, Foo, std::string> raii4(std::move(foo4), std::string("foo4"))
+		
+		//calls a default constructor and initialize with a name
+		RAII<Creator4, Destroyer, Foo, std::string> raii4DefaultConstructor(foo4DefaultConstructor, std::string("foo4"));
+		
+		//shared ownership of a resource, expect the destroyer doesn't delete the object. No condition is imposed to enforce that.
+		RAII<Creator5, DestroyerBar, Bar*, std::string> raii5NoDefaultConstructor(&bar4NoDefaultConstructor, std::string("bar4"));
+		
 /////////////////////////////////////////////////////////////////////////////
 Other notes:
     
