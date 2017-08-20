@@ -31,11 +31,8 @@ ascertain luminosity
 	
 			
 2. Another method which calculates relative Luminosity is based on the following formulae
-LuminosityCalculator.exe
  Luminosity of a pixel = 0.0722 * B + 0.7152 * G  + 0.2126 * R
  
-
-The calculation of Luminosity are done 
 LuminosityCalculator.cpp
     
 	This is the file that contain main function and processes the input arguments.
